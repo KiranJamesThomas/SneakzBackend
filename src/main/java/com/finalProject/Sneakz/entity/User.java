@@ -19,9 +19,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column
-    private String uName;
+    private String email;
     @Column
-    private String uPassword;
+    private String password;
 }
 
 //import com.finalProject.Sneakz.entity.Role;

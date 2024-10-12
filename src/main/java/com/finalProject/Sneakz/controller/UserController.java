@@ -28,6 +28,12 @@ public class UserController {
         return new ResponseEntity<>(user,HttpStatus.FOUND);
     }
 
+    @GetMapping("/user/name/{name}")
+    public ResponseEntity<User> getUserByName (@PathVariable(value="id") long id){
+        User user = userService.findByUserId(id).orElseThrow();
+        return new ResponseEntity<>(user,HttpStatus.FOUND);
+    }
+
     @GetMapping("/user")
     public ResponseEntity<List<User>> getAllUser (){
         List<User> users = userService.getAllUsers();

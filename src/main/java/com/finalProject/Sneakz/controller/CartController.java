@@ -23,11 +23,13 @@ public class CartController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/cart")
-    public ResponseEntity<Cart> createImage(@RequestBody Cart cart){
+    @PostMapping("/cart/size/{size}/quantity/{qt}")
+    public ResponseEntity<Cart> createImage(@RequestBody Cart cart, @PathVariable int size, @PathVariable int qt){
         long p_id= cart.getProduct().getId();
         long u_id = cart.getUser().getId();
         Product product = productService.findById(p_id).orElseThrow();
+        product.setSize(size);
+        product.setQuantity(qt);
         User user = userService.findByUserId(u_id).orElseThrow();
         cart.setProduct(product);
         cart.setUser(user);

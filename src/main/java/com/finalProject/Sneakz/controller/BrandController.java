@@ -34,4 +34,9 @@ public class BrandController {
     public ResponseEntity<Brand> getBrandById(@PathVariable long id){
         return new ResponseEntity<>(brandService.getBrandById(id).orElseThrow(), HttpStatus.OK);
     }
+
+    @GetMapping("/top-brands")
+    public List<Brand> getTopBrands() {
+        return brandService.getTop5BrandsWithMostProducts();
+    }
 }

@@ -33,4 +33,8 @@ public class BrandService {
     public Optional<Brand> getBrandById(long id){
         return brandRepository.findById(id);
     }
+
+    public List<Brand> getTop5BrandsWithMostProducts() {
+        return brandRepository.findTop5BrandsWithMostProducts().subList(0, 5); // Limiting to top 5
+    }
 }
