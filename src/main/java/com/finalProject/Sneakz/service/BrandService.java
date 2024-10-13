@@ -2,6 +2,7 @@ package com.finalProject.Sneakz.service;
 
 import com.finalProject.Sneakz.entity.Brand;
 import com.finalProject.Sneakz.repository.BrandRepository;
+import com.finalProject.Sneakz.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,9 @@ import java.util.Optional;
 public class BrandService {
     @Autowired
     private BrandRepository brandRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
 
     public Brand create(Brand brand){
         return brandRepository.save(brand);
@@ -34,7 +38,5 @@ public class BrandService {
         return brandRepository.findById(id);
     }
 
-    public List<Brand> getTop5BrandsWithMostProducts() {
-        return brandRepository.findTop5BrandsWithMostProducts().subList(0, 5); // Limiting to top 5
-    }
+
 }

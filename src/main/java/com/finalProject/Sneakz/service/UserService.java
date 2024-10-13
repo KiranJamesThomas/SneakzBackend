@@ -20,11 +20,26 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User findByUserName(String uName){
-        return userRepository.findByUName(uName);
+    public User findByUserName(String email){
+        return userRepository.findByEmail(email);
     }
 
     public Optional<User> findByUserId(long id){
         return userRepository.findById(id);
+    }
+
+    public User registerUser(String email, String password) {
+        User user = new User();
+        user.setEmail(email);
+        user.setPassword(password);
+        return userRepository.save(user);
+    }
+
+    public User loginUser(String email, String password) {
+        User user = userRepository.findByEmail(email);
+        if (user != null && password.equals(user.getPassword())) {
+            return user; // Successful login
+        }
+        return null; // Login failed
     }
 }

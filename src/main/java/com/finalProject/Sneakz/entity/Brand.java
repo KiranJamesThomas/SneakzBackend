@@ -21,10 +21,6 @@ public class Brand{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    /*@OneToMany(mappedBy = "brand", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    private Set<Product> products;*/
-
     @Lob
     private String brandName;
 }

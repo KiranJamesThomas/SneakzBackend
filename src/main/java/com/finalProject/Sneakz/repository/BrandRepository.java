@@ -12,7 +12,6 @@ public interface BrandRepository extends JpaRepository<Brand, Long> {
 
     Brand findBrandByBrandName(String brandName);
 
-    @Query(value = "SELECT b FROM Brand b JOIN b.products p GROUP BY b.id ORDER BY COUNT(p.id) DESC")
-    List<Brand> findTop5BrandsWithMostProducts();
+
 
 }

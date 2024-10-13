@@ -12,14 +12,27 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Sneakz")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @PostMapping("/user")
+    @PostMapping("/register")
     public ResponseEntity<User> createUser (@RequestBody User user){
-        return new ResponseEntity<>(userService.create(user), HttpStatus.OK);
+        String email = user.getEmail();
+        String password = user.getPassword();
+        return new ResponseEntity<>(userService.registerUser(email, password), HttpStatus.OK);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<User> login(@RequestBody User user) {
+        User authenticatedUser = userService.loginUser(user.getEmail(), user.getPassword());
+        if (authenticatedUser != null) {
+            return ResponseEntity.ok(authenticatedUser);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
     }
 
     @GetMapping("/user/{id}")

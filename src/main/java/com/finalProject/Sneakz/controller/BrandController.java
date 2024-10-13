@@ -35,8 +35,8 @@ public class BrandController {
         return new ResponseEntity<>(brandService.getBrandById(id).orElseThrow(), HttpStatus.OK);
     }
 
-    @GetMapping("/top-brands")
-    public List<Brand> getTopBrands() {
-        return brandService.getTop5BrandsWithMostProducts();
-    }
+//    @GetMapping("/top-brands")
+//    public List<Brand> getTopBrands() {
+//        return brandService.getTop5BrandsWithMostProducts();
+//    }
 }
