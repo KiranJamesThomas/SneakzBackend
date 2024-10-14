@@ -38,4 +38,9 @@ public class WishlistController {
     public ResponseEntity<List<Wishlist>> getWishlistItemsByUserId(@PathVariable long user_id){
         return new ResponseEntity<>(wishlistService.findAllByUser(user_id), HttpStatus.OK);
     }
+
+//    @DeleteMapping("/wishlist/{product_id}")
+//    public ResponseEntity<List<Wishlist>> deleteWishlistItemsByProductId(@PathVariable long product_id){
+//
+//    }
 }

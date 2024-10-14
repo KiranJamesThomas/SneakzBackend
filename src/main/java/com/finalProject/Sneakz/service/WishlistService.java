@@ -26,4 +26,9 @@ public class WishlistService {
     public List<Wishlist> findAllByUser(long id){
         return new ArrayList<>(wishlistRepository.findByUserId(id));
     }
+
+    public Wishlist findByProductId(long id){
+
+        return wishlistRepository.findByProductId(id);
+    }
 }
